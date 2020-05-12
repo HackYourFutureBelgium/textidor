@@ -43,7 +43,7 @@ _;
 //  redirected to by other routes
 app.get('/files', (req, res, next) => {
   fs.readdir(FILES_DIR, (err, list) => {
-    if (_) {
+    if (err && err.code === 'ENOENT') {
       res.status(404).end();
       _;
     }
@@ -100,7 +100,7 @@ app._('_', (req, res, next) => {
 app._('_', (req, res, next) => {
   const fileName = _; // read from params
   fs._(`${FILES_DIR}/${fileName}`, err => {
-    if (err && err.code === 'ENOENT') {
+    if (_) {
       _;
       _;
     }

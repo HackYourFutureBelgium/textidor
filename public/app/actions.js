@@ -1,7 +1,7 @@
 // all of this code works!
 
 const fetchAndLoadFile = fileName =>
-  fetch('/files/' + fileName)
+  fetch('/files/' + encodeURIComponent(fileName))
     .then(res => {
       if (!res.ok) {
         throw res;
@@ -12,7 +12,7 @@ const fetchAndLoadFile = fileName =>
     .catch(err => console.error(err));
 
 const saveFile = (fileName, fileText) => {
-  fetch('/files/' + fileName, {
+  fetch('/files/' + encodeURIComponent(fileName), {
     method: 'POST',
     body: JSON.stringify({ text: fileText }),
     headers: {
@@ -36,7 +36,7 @@ const saveFile = (fileName, fileText) => {
 };
 
 const deleteFile = fileName => {
-  fetch('/files/' + fileName, {
+  fetch('/files/' + encodeURIComponent(fileName), {
     method: 'DELETE',
   })
     .then(res => {
