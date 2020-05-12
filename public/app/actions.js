@@ -1,3 +1,5 @@
+// all of this code works!
+
 const fetchAndLoadFile = fileName =>
   fetch('/files/' + fileName)
     .then(res => {
